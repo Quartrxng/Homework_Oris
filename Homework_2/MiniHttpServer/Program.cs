@@ -41,20 +41,26 @@ server.Start();
 while (_keepRunning) 
 {
     var a = Console.ReadLine();
-    if (a == "/stop")
-    {
-        server.Stop();
-    }
     if (a == "/start")
     {
         server.Start();
     }
+
     if (a == "/restart")
     {
         server.Stop();
         Thread.Sleep(500);
         server.Start();
     }
-}
 
-server.Stop();
+    if (a == "/stop")
+    {
+        server.Stop(ref _keepRunning);
+        break;
+    }
+
+    if (a== "/off")
+    {
+        server.Stop();
+    }
+}

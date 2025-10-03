@@ -36,6 +36,15 @@ namespace MiniHttpServer
             _ = ListenAsync(_cts.Token);
         }
 
+        public void Stop(ref bool keepRunning)
+        {
+            _cts?.Cancel();
+            _listener?.Stop();
+            _listener?.Close();
+            Console.WriteLine("Сервер остановлен");
+            keepRunning = false;
+        }
+
         public void Stop()
         {
             _cts?.Cancel();
