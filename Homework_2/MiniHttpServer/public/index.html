@@ -1,10 +1,283 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset='utf8'>
-    <title>METANIT.COM</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h2>Hello 11-409</h2>
+    <div class = "temperature">
+        <h5>36°</h5>
+        <h6>Ahmedabad</h6>
+    </div>
+    <div class = central>
+        <div class = "main">
+            <h1>09:11:01</h1>
+            <h2>Good Morning, Saad.</h2>
+        </div>
+        <div class="bottom">
+            <div class="search-container">
+                <img src="img/search-01.svg" class="search-icon" alt="Search">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class = "links">
+                <ul class = "social">
+                    <li><a href="https://youtube.com"><img src="img/Frame.svg" alt="YouTube" width="40" height="40"></a></li>
+                    <li><a href="https://facebook.com"><img src="img/Frame (1).svg" alt="Facebook" width="40" height="40"></a></li>
+                    <li><a href="https://www.geeksforgeeks.org/"><img src="img/Frame (2).svg" alt="GeeksforGeeks" width="40" height="40"></a></li>
+                    <li><a href="https://www.deepseek.com/"><img src="img/Frame (3).svg" alt="Deepseek" width="40" height="40"></a></li>
+                    <li><a href="https://github.com/"><img src="img/Frame (4).svg" alt="Github" width="40" height="40"></a></li>
+                    <li><a href="https://linkedin.com"><img src="img/Frame (5).svg" alt="LinkedIn" width="40" height="40"></a></li>
+                    <li><img src="img/plus-sign.svg" alt="Plus" width="40" height="40"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <style>
+            .central{
+                flex: 1; 
+                display: flex;         
+                flex-direction: column; 
+                justify-content: center; 
+                align-items: center;    
+                gap: 55.65px;
+            }
+            
+            .temperature {
+                position: absolute;
+                top: 35px;
+                right: 35px;
+                display: flex;
+                flex-direction: column;  
+                align-items: flex-end;   
+                text-align: right;
+            }
+
+            .temperature > h5{
+                font-size:32px;
+                font-family: "Afacad", sans-serif;
+                font-style: bold;
+                color:#212121;
+                margin: 0;
+            }
+            .temperature > h6{
+                color: #6E6CDF;
+                font-family: "Afacad", sans-serif;
+                font-style: bold;
+                font-size:20px;
+                margin: 0;
+            }
+
+            .main{
+                display: flex;
+                flex-direction: column;  
+                align-items: center;   
+                text-align: center;    
+            }
+
+            .bottom {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 57px;
+            }
+
+            .search-container {
+                position: relative;
+            }
+
+            .search-icon {
+                position: absolute;
+                left: 25.83px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 28px;
+                height: 28px;
+                color: #666;
+                pointer-events: none;
+            }
+
+            .search-container input::placeholder{
+                color: #9E9E9E;
+            }
+
+            .search-container input {
+                background-color: #FAFAFA;
+                padding: 18.55px 27.83px 18.55px 60.83px;
+                border: 1.16px solid #EEEEEE;
+                border-radius: 18.55px;
+                width: 580px;
+                font-size:20px;
+                font-family: "Poppins", sans-serif;
+                font-style: normal;
+                color: black;
+            }
+
+            .search-container input:focus{
+                outline: none;
+                border: 1.16px solid gray;
+            }
+
+            .main > h1{
+                font-size:74px;
+                margin: 0;
+                font-family: "Afacad", sans-serif;
+                font-style: bold;
+            }
+
+            .main > h2{
+                font-family: "Afacad", sans-serif;
+                font-style: bold;
+                color: #6E6CDF;
+                font-size:36px;
+                margin: 0;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: white;
+                min-height: 100vh; 
+                display: flex;
+                flex-direction: column;
+                position: relative;
+            }
+
+            ul{
+                list-style: none;
+                padding: 0;
+                
+            }
+
+            .social{
+                display: flex;
+                gap: 33.5px;
+            }
+
+            .social > li {
+                background-color: #FAFAFA;
+                border: 1.16px solid #EEEEEE;
+                height: 65px;
+                width: 65px;
+                border-radius: 18.57px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .social > li a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                text-decoration: none;
+            }
+            .social > li:hover {
+                    background-color: #EEEEEE;
+            }
+            
+            .social img {
+                width: 35px;
+                height: 35px;
+                object-fit: contain;
+                display: block;
+            }
+
+        @media (max-width: 530px) {
+            .temperature {
+                top: 24px;
+                right: 24px;
+            }
+
+            .main{
+                padding-top: 145px;
+            }
+            
+            .temperature > h5 {
+                font-size: 22px;
+                width: 31px;
+                height: 29px;
+
+            }
+            
+            .temperature > h6 {
+                font-size: 14px;
+                width: 68px;
+                height: 19px;
+            }
+            
+            .main > h1 {
+                font-size: 48px;
+                width: 182px;
+                height: 64px;
+            }
+            
+            .main > h2 {
+                font-size: 24px;
+                width: 198px;
+                height: 32px;
+            }
+            
+            .search-container input {
+                width: 275px;
+
+                padding: 16px 24px 16px 54px;
+                font-size: 16px;
+            }
+            
+            .search-icon {
+                left: 20px;
+                width: 20px;
+                height: 20px;
+            }
+
+            .main{
+                flex: 1; 
+                display: flex;  
+                margin-top: 89px;       
+                flex-direction: column; 
+                justify-content: center; 
+                align-items: center;    
+                gap: 6px;
+                width: 345px;
+                height: 104px;
+            }
+            
+            .bottom{
+                flex: 1; 
+                display: flex;         
+                flex-direction: column; 
+                justify-content: end; 
+                padding-bottom: 135px;
+                align-items: center;    
+                gap: 10px;
+            }
+            
+            .social {
+                gap: 24px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .social > li {
+                height: 50px;
+                width: 50px;
+            }
+
+            .social > li:nth-child(n+6) {
+                display: none;
+            }
+            
+            .social img {
+                width: 30px;
+                height: 30px;
+            }
+    }
+
+    </style>
 </body>
 </html>

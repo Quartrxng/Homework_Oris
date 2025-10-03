@@ -55,7 +55,8 @@ namespace MiniHttpServer
 
         private async Task ProcessRequest(HttpListenerContext context, CancellationToken token)
         {
-            try {
+            try 
+            {
                 // отправляемый в ответ код htmlвозвращает
                 string responseText = System.IO.File.ReadAllText($"{Settings.PublicDirectoryPath}/index.html");
 
@@ -70,9 +71,9 @@ namespace MiniHttpServer
                 await output.WriteAsync(buffer);
                 await output.FlushAsync();
 
-                Console.WriteLine("Запрос обработан");
+            Console.WriteLine("Запрос обработан");
                 
-                }
+            }
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Файл index.html не найден");
