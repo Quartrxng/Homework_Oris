@@ -60,56 +60,26 @@ namespace MiniHttpServer
         {
             try
             {
+                // отправляемый в ответ код htmlвозвращает
+                string responseText = System.IO.File.ReadAllText($"{Settings.PublicDirectoryPath}/index.html");
+
                 var request = context.Request;
                 var response = context.Response;
 
-                string requestPath = request.Url.AbsolutePath.TrimStart('/');
-                if (string.IsNullOrEmpty(requestPath))
-                {
-                    requestPath = "index.html";
-                }
+                byte[] buffer = Encoding.UTF8.GetBytes(responseText);
+                // получаем поток ответа и пишем в него ответ
+                response.ContentLength64 = buffer.Length;
+                using Stream output = response.OutputStream;
+                // отправляем данные
+                await output.WriteAsync(buffer);
+                await output.FlushAsync();
 
-                string fullPath = Path.Combine(Settings.PublicDirectoryPath, requestPath);
-
-                if (File.Exists(fullPath))
-                {
-                    Console.WriteLine("Запрос отработан");
-                    byte[] fileBytes = await File.ReadAllBytesAsync(fullPath, token);
-                    response.ContentLength64 = fileBytes.Length;
-
-                    await response.OutputStream.WriteAsync(fileBytes, token);
-                    await response.OutputStream.FlushAsync(token);
-                }
-                else
-                {
-                    response.StatusCode = 404;
-                    string notFoundHtml = "<html><body><h1>404 - Not Found</h1><p>File not found: " + requestPath + "</p></body></html>";
-                    byte[] buffer = Encoding.UTF8.GetBytes(notFoundHtml);
-                    response.ContentLength64 = buffer.Length;
-                    await response.OutputStream.WriteAsync(buffer, token);
-                    await response.OutputStream.FlushAsync(token);
-
-                    Console.WriteLine($"Файл не найден: {requestPath} (404)");
-                }
-            }
-            catch (OperationCanceledException)
-            {
+                Console.WriteLine("Запрос обработан");
 
             }
-            catch (Exception ex)
+            catch (FileNotFoundException)
             {
-                Console.WriteLine($"Ошибка обработки запроса: {ex.Message}");
-                try
-                {
-                    context.Response.StatusCode = 500;
-                    string errorHtml = "<html><body><h1>500 - Internal Server Error</h1></body></html>";
-                    byte[] buffer = Encoding.UTF8.GetBytes(errorHtml);
-                    context.Response.ContentType = "text/html";
-                    context.Response.ContentLength64 = buffer.Length;
-                    await context.Response.OutputStream.WriteAsync(buffer);
-                    await context.Response.OutputStream.FlushAsync();
-                }
-                catch { }
+                Console.WriteLine("Файл index.html не найден");
             }
         }
     }
