@@ -70,11 +70,16 @@ while (_keepRunning)
         server.Stop(ref _keepAlive);
     }
 
+
     else if (a == "/start" && !_keepAlive)
     {
         Console.WriteLine("Сервер уже запущен");
     }
 
+    else if (a == "/off" && !_keepAlive)
+    {
+        Console.WriteLine("Сервер уже выключен");
+    }
 
     else if (a == "/help")
     {
