@@ -79,7 +79,7 @@ namespace MiniHttpServer
                     await output.WriteAsync(buffer);
                     await output.FlushAsync();
 
-                    Console.WriteLine("Запрос обработан");
+                    Console.WriteLine($"Запрос обработан {path}");
                 }
 
                 catch (FileNotFoundException)

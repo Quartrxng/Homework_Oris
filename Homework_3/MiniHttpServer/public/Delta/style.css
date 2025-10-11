@@ -1090,6 +1090,7 @@ p {
 .seo-text-section{
     line-height: 1.5;
     padding: 55px 20px;
+    font-size: 16px;
 }
 
 .seo-text-section__container h2{
@@ -1112,12 +1113,25 @@ p {
     line-height: 24px;
 }
 
-.seo-text-section__container ul{
+.seo-text-section__container ul {
     margin-bottom: 1rem;
     margin: 0;
     list-style-position: inside;
     padding-left: 22px;
     text-align: left;
+}
+
+.seo-text-section__container li {
+    list-style: outside;
+}
+
+.seo-text-section__container li ::marker{
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+    text-indent: 0px !important;
+    text-align: start !important;
+    text-align-last: auto !important;
 }
 
 /*=============*/
@@ -1173,6 +1187,10 @@ p {
     margin-bottom: 14px;
     width: 180px;
     list-style: none;
+}
+
+.footer-column li:last-of-type{
+    margin-bottom:0
 }
 
 .footer-column a {
@@ -1302,9 +1320,19 @@ p {
     margin: 0!important;
 }
 
+.footer-bottom {
+    margin-right: 40px;
+    margin-top: 40px;
+}
+
 .footer-bottom .text {
     color: #959da8;
     font-size: 12px;
     line-height: 15px;
     margin-bottom: 20px;
 }
+
+    .footer-bottom .copyright {
+        line-height: 12px;
+        margin-bottom: 8px;
+    }
